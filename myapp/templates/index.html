@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Med We Care</title>
+    <style>
+        h1 {padding-top: 1em}
+
+        #inside { padding-top: 1em;}
+
+        li{
+            padding-top: 1em;
+        }
+/* 
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+
+        }
+ 
+        .grid-container > div {
+        
+        text-align: center;
+        } */
+
+        h4 {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>	
+ 
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <title>Med We Care</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {
+                height: 100vh;
+            }
+    
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100vh;
+            }
+            h4{
+                font-weight: bold;
+            }
+    
+            /* On small screens, set height to 'auto' for the grid */
+            @media screen and (max-width: 767px) {
+                .row.content {
+                    height: auto;
+                }
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        <nav class="navbar navbar-inverse visible-xs">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Home</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Dashboard</a></li>
+                        <li><a href="#">Heart Rate</a></li>
+                        <li><a href="#">Oxygen Saturation levels</a></li>
+                        <li><a href="#">Systolic Pressure</a></li>    
+                        <li><a href="#">Diastolic Pressure</a></li>
+
+		</ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-lg-2 sidenav hidden-xs" style="z-index:100; position:fixed;">
+                    <h2>Logo</h2>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#section0" ">Dashboard</a></li>
+                        <div style="width: 100%;">
+                        <li><a href="#section1">Heart Rate</a></li>
+                        </div>
+                        <div style="width: 100%;">
+                        <li><a href="#section2">Oxygen Saturation Levels</a></li>
+                        </div>
+                        <div style="width: 100%;">
+                        <li><a href="#section3">Systolic Pressure</a></li>
+                        </div>
+                        <div style="width: 100%;">
+                            <li><a href="#section4">Diastolic Pressure</a></li>
+                        </div>
+			<!-- <div style="width:100%;">
+				<h3>Developer</h3>
+			</div>
+			<div style="width: 100%;">
+                		<li><a href="https://group7iot.com/api/myapp/">Django API</a></li>
+			</div>
+			<div style="width: 100%;">
+				<li><a href="https://www.group7iot.com:1880/admin/">Node-Red</a></li>
+			</div>
+			<div style="width: 100%;">
+				<li><a href="https://www.group7iot.com/admin/">SQLite DB</a></li>
+			</div> -->
+                    </ul><br>
+		</div>
+                <br>
+    
+                <div class="col-sm-9" id="section0">
+                    <div class="well">
+                        <h4>Dashboard</h4>
+                        <p>Fully Operational</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4><strong>Heart Rate </strong></h4>
+                                <p>{{ recentVital.heartRate }} bpm</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4><strong>Oxygen Saturation</strong></h4>
+                                <p>{{ recentVital.oxygenSaturation }}%</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4><strong>Diastolic Pressure</strong></h4>
+                                <p>{{ recentVital.diastolic }} mmHG</p>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4>Systolic Pressure</h4>
+                                <p>{{recentVital.systolic}} mmHG</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4>Heart Rate History</h4>
+                                <ol>
+                                {% for vital in vitalList reversed %}
+                                    
+                                        <li><p>{{vital.heartRate}} bpm</p></li>
+                                    
+                                {%endfor%}
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="well">
+                                <h4>Oxygen History</h4>
+                                <ol>
+
+                                {% for vital in vitalList reversed %}
+
+                                <li><p>{{vital.oxygenSaturation}} %</p></li>
+                                
+                                {%endfor%}
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="well">
+                                    <div><h4>Systolic History</h4></div>
+                                    <ol>
+                                    {% for vital in vitalList reversed %}
+                                    <div><li><p>{{vital.systolic}} %</p></li></div>
+                                    {%endfor%}
+                                    </ol>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-3">
+                            <div class="well">
+                                    <div><h4>Diastolic History</h4></div>
+                                    <ol>
+                                    {% for vital in vitalList reversed %}
+                                    <div><li><p>{{vital.diastolic}} %</p></li></div>
+                                    {%endfor%}
+                                    </ol>
+
+                            </div>
+                        </div>
+                        
+                         <div class="col-md-12" id="section1">
+                            <div class="well" > 
+                                <center>
+                                
+                                {{ hrGraph |safe }}
+                                </center>
+                                
+                                
+                            </div>
+                         </div> 
+                        <div class="col-md-12" id="section2">
+                            <div class="well" > 
+                                <center>
+                                
+                                {{ spoGraph |safe }}
+                                </center>
+                                
+                                
+                            </div>
+                         </div> 
+                           <div class="col-md-12" id="section3">
+                            <div class="well" > 
+                                <center>
+                                
+                                {{ sysGraph |safe }}
+                                </center>
+                                
+                                
+                            </div>
+                         </div> 
+                          <div class="col-md-12" id="section4">
+                            <div class="well" > 
+                                <center>
+                                
+                                {{ diaGraph |safe }}
+                                </center>
+                                
+                                
+                            </div>
+                         </div> 
+
+
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+    </body>
+    
+    </html>
+
+
+    
+</body>
+</html>
