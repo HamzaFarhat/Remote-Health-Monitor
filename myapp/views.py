@@ -14,12 +14,12 @@ from io import StringIO
 
 
 def createGraph(myList, name):
-    
     x = []
     y = []
     for idx, val in enumerate(myList[0:30]):
         y.append(val)
         x.append(idx)
+    y = y[::-1]
     fig = plt.figure()
     print(name,":", y)
     plt.plot(x, y)
@@ -57,11 +57,17 @@ def index(request):
     hr_list = [float(o.heartRate) for o in vitalList]
     spo_list = [float(o.oxygenSaturation) for o in vitalList]
 
+    sys_list = sys_list[::-1]
+    dia_list = dia_list[::-1]
+    hr_list = hr_list[::-1]
+    spo_list = spo_list[::-1]
+
     sysGraph = createGraph(sys_list, "Systolic")
     diaGraph = createGraph(dia_list, "Diastolic")
     hrGraph = createGraph(hr_list, "Heart Rate");
     spoGraph = createGraph(spo_list, "Oxygen Saturation Levels")
 
+    vitalList = vitalList[::-1]
     vitalList = vitalList[0:5]
 
 
