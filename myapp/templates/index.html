@@ -170,7 +170,7 @@
                             <div class="well">
                                 <h4>Heart Rate History</h4>
                                 <ol>
-                                {% for vital in vitalList reversed %}
+                                {% for vital in vitalList %}
                                     
                                         <li><p>{{vital.heartRate}} bpm</p></li>
                                     
@@ -183,7 +183,7 @@
                                 <h4>Oxygen History</h4>
                                 <ol>
 
-                                {% for vital in vitalList reversed %}
+                                {% for vital in vitalList %}
 
                                 <li><p>{{vital.oxygenSaturation}} %</p></li>
                                 
@@ -196,7 +196,7 @@
                             <div class="well">
                                     <div><h4>Systolic History</h4></div>
                                     <ol>
-                                    {% for vital in vitalList reversed %}
+                                    {% for vital in vitalList%}
                                     <div><li><p>{{vital.systolic}} %</p></li></div>
                                     {%endfor%}
                                     </ol>
@@ -209,7 +209,7 @@
                             <div class="well">
                                     <div><h4>Diastolic History</h4></div>
                                     <ol>
-                                    {% for vital in vitalList reversed %}
+                                    {% for vital in vitalList %}
                                     <div><li><p>{{vital.diastolic}} %</p></li></div>
                                     {%endfor%}
                                     </ol>
